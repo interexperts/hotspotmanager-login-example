@@ -10,12 +10,15 @@ if(!isset($_POST['nasid'])){
    * user, like a facebook login or e-mail address.
    *
    * An example entry url will look like:
-   * http://{{your_url}}/?res=notyet&uamip=10.1.4.1
+   * http://{{your_url}}/?res=notyet&uamip=192.168.1.1
      &uamport=3990&challenge=1e6060a5a0af04e0b487e702b52d5d57
-     &called=00-10-F3-1C-58-E1&mac=9C-B7-0D-88-56-56&ip=10.1.4.34
-     &nasid=interexperts.efw&sessionid=505ac70b00000001
+     &called=00-AA-BB-CC-DD-EE&mac=00-00-00-00-00-00&ip=192.168.1.124
+     &nasid=demo.example&sessionid=505ac70b00000001
      &userurl=http%3a%2f%2fwww.nu.nl%2f&md=6B3338E95420A43F53C8641762F7103C
    *
+   * The `res` variable can be
+       'notyet' (not authenticated),
+       'error' (authentication failed)
    */
 
   ?>
@@ -33,7 +36,9 @@ if(!isset($_POST['nasid'])){
     <br /><br />
     <label>Challenge</label><br />
     <input type='text' required='required' name='challenge' value='<?php echo $_GET['challenge']?>' />
-    <br /><br />
+  </fieldset>
+  <fieldset>
+    <legend>API configuration (should not be shown to user)</legend>
     <label>API-endpoint (no ending `/`)</label><br />
     <input type='text' required='required' name='api_endpoint' value='' />
     <br /><br />
@@ -44,7 +49,7 @@ if(!isset($_POST['nasid'])){
 }else{
   /*
    * The user has agreed to the terms of service and provided additional
-   * information like an e-mailaddress. Here you can save this data to the
+   * information like an e-mail address. Here you can save this data to the
    * database and continue with authentication on the accesspoint.
    */
 
@@ -75,7 +80,7 @@ if(!isset($_POST['nasid'])){
   $challenge_url = $response->body->challenge_url;
 
   /*
-   * Finally, we transfer the user to the accesspoint challenge URL that
+   * Finally, we redirect the user to the accesspoint challenge URL that
    * logs them into the network and grants them internet access. In this example
    * we require you to click the link. In production you can automatically
    * redirect the user in order to skip this step.
