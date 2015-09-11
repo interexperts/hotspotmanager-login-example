@@ -1,0 +1,16 @@
+{
+    "name": "interexperts/hotspotmanager-landing-demo",
+    "description": "Example of a custom landing page using the API of hotspotmanager.nl that authenticates users",
+    "type": "project",
+    "require": {
+        "nategood/httpful": "^0.2.19"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "InterExperts",
+            "email": "webontwikkeling@interexperts.nl"
+        }
+    ],
+    "minimum-stability": "stable"
+}
