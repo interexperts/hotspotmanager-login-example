@@ -40,7 +40,7 @@ if(!isset($_POST['nasid'])){
   <fieldset>
     <legend>API configuration (should not be shown to user)</legend>
     <label>API-endpoint (no ending `/`)</label><br />
-    <input type='text' required='required' name='api_endpoint' value='' />
+    <input type='text' required='required' name='api_endpoint' value='https://managementapi.hotspotmanager.nl/v1' />
     <br /><br />
     <label>API-key</label><br />
     <input type='text' required='required' name='api_key' value='' />
@@ -85,5 +85,7 @@ if(!isset($_POST['nasid'])){
    * we require you to click the link. In production you can automatically
    * redirect the user in order to skip this step.
    */
+   echo "<p>The returned challenge url is: {$challenge_url}. Normally you will
+   be able to skip this page and automatically redirect the user.</p>";
    echo "<a href='{$challenge_url}'>Click to finalize</a>";
 }
